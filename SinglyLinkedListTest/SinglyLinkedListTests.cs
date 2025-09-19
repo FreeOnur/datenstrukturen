@@ -8,8 +8,8 @@ namespace SinglyLinkedListTest
         public void InsertAtEnd_AddsNodeCorrectly()
         {
             Node head = null;
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
 
             Assert.AreEqual("Onur", head.Data.Name);
             Assert.AreEqual("Arslan", head.Next.Data.Name);
@@ -19,9 +19,9 @@ namespace SinglyLinkedListTest
         public void InsertAtSpecificPosition_AddsNodeAtCorrectPosition()
         {
             Node head = null;
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
-            head = SinglyLinkedList.insertAtSpecificPosition(head, 2, new Person(new DateTime(2000, 1, 1), "männlich", "Mehmet"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
+            head = SinglyLinkedList.insertAtSpecificPosition(2, new Person(new DateTime(2000, 1, 1), "männlich", "Mehmet"));
 
             Assert.AreEqual("Onur", head.Data.Name);
             Assert.AreEqual("Mehmet", head.Next.Data.Name);
@@ -32,10 +32,10 @@ namespace SinglyLinkedListTest
         public void SearchSpecificPerson_ReturnsCorrectNode()
         {
             Node head = null;
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
-            head = SinglyLinkedList.insertAtEnd(head, new Person(new DateTime(2000, 1, 1), "weiblich", "Maurice"));
-            Node result = SinglyLinkedList.searchNode(head, "Arslan");
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
+            head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Maurice"));
+            Node result = SinglyLinkedList.searchNode("Arslan");
 
             Assert.IsNotNull(result);
             Assert.AreEqual("Arslan", result.Data.Name);

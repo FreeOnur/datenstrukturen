@@ -9,11 +9,13 @@ namespace Datenstrukturen
 {
     public class SinglyLinkedList
     {
-        public static Node insertAtEnd(Node head, Person person)
+        private static Node head;
+        public static Node insertAtEnd(Person person)
         {
             Node newNode = new Node(person);
             if (head == null)
             {
+                head = newNode;
                 return newNode;
             }
             Node last = head;
@@ -25,7 +27,7 @@ namespace Datenstrukturen
             return head;
         }
 
-        public static Node insertAtSpecificPosition(Node head, int pos, Person person)
+        public static Node insertAtSpecificPosition(int pos, Person person)
         {
             if(pos<1)
             {
@@ -35,6 +37,7 @@ namespace Datenstrukturen
             {
                 Node newNode = new Node(person);
                 newNode.Next = head;
+                head = newNode;
                 return newNode;
             }
             Node current = head;
@@ -52,7 +55,7 @@ namespace Datenstrukturen
             return head;
         }
 
-        public static Node searchNode(Node head, string name)
+        public static Node searchNode(string name)
         {
             Node current = head;
             while (current != null)
@@ -66,7 +69,7 @@ namespace Datenstrukturen
             return null;
         }
 
-        public static void printSinglyLinkedList(Node head)
+        public static void printSinglyLinkedList()
         {
             Node current = head;
             while (current != null)
