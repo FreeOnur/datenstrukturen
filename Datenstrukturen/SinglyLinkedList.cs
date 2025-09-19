@@ -9,16 +9,16 @@ namespace Datenstrukturen
 {
     public class SinglyLinkedList
     {
-        private static Node head;
-        public static Node insertAtEnd(Person person)
+        private static Node<Person> head;
+        public static Node<Person> insertAtEnd(Person person)
         {
-            Node newNode = new Node(person);
+            Node<Person> newNode = new Node<Person>(person);
             if (head == null)
             {
                 head = newNode;
                 return newNode;
             }
-            Node last = head;
+            Node<Person> last = head;
             while (last.Next != null)
             {
                 last = last.Next;
@@ -27,7 +27,7 @@ namespace Datenstrukturen
             return head;
         }
 
-        public static Node insertAtSpecificPosition(int pos, Person person)
+        public static Node<Person> insertAtSpecificPosition(int pos, Person person)
         {
             if(pos<1)
             {
@@ -35,12 +35,12 @@ namespace Datenstrukturen
             }
             if (pos == 1)
             {
-                Node newNode = new Node(person);
+                Node<Person> newNode = new Node<Person>(person);
                 newNode.Next = head;
                 head = newNode;
                 return newNode;
             }
-            Node current = head;
+            Node<Person> current = head;
             for (int i = 1; i < pos -1 && current != null; i++)
             {
                 current = current.Next;
@@ -49,15 +49,15 @@ namespace Datenstrukturen
             {
                 return head;
             }
-            Node newNode2 = new Node(person);
+            Node<Person> newNode2 = new Node<Person>(person);
             newNode2.Next = current.Next;
             current.Next = newNode2;
             return head;
         }
 
-        public static Node searchNode(string name)
+        public static Node<Person> searchNode(string name)
         {
-            Node current = head;
+            Node<Person> current = head;
             while (current != null)
             {
                 if (current.Data.Name == name)
@@ -71,7 +71,7 @@ namespace Datenstrukturen
 
         public static void printSinglyLinkedList()
         {
-            Node current = head;
+            Node<Person> current = head;
             while (current != null)
             {
                 Console.WriteLine(current.Data);

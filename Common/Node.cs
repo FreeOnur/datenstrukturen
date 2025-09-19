@@ -2,14 +2,13 @@
 
 namespace Common
 {
-    public class Node
+    public class Node<T>
     {
-        public Person Data;
-        public Node Next;
-        public Node(Person data)
+        public T Data;
+        public Node<T> Next;
+        public Node(T argData)
         {
-            Data = data;
-            Next = null;
+            Data = argData;
         }
     }
 }

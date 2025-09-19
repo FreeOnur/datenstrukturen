@@ -7,7 +7,7 @@ namespace SinglyLinkedListTest
         [Test]
         public void InsertAtEnd_AddsNodeCorrectly()
         {
-            Node head = null;
+            Node<Person> head = null;
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
 
@@ -18,7 +18,7 @@ namespace SinglyLinkedListTest
         [Test]
         public void InsertAtSpecificPosition_AddsNodeAtCorrectPosition()
         {
-            Node head = null;
+            Node<Person> head = null;
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
             head = SinglyLinkedList.insertAtSpecificPosition(2, new Person(new DateTime(2000, 1, 1), "männlich", "Mehmet"));
@@ -31,11 +31,11 @@ namespace SinglyLinkedListTest
         [Test]
         public void SearchSpecificPerson_ReturnsCorrectNode()
         {
-            Node head = null;
+            Node<Person> head = null;
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Onur"));
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Arslan"));
             head = SinglyLinkedList.insertAtEnd(new Person(new DateTime(2000, 1, 1), "weiblich", "Maurice"));
-            Node result = SinglyLinkedList.searchNode("Arslan");
+            Node<Person> result = SinglyLinkedList.searchNode("Arslan");
 
             Assert.IsNotNull(result);
             Assert.AreEqual("Arslan", result.Data.Name);
