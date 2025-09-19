@@ -24,6 +24,7 @@ namespace Datenstrukturen
             last.Next = newNode;
             return head;
         }
+
         public static Node insertAtSpecificPosition(Node head, int pos, Person person)
         {
             if(pos<1)
@@ -50,6 +51,7 @@ namespace Datenstrukturen
             current.Next = newNode2;
             return head;
         }
+
         public static Node searchNode(Node head, string name)
         {
             Node current = head;
@@ -63,6 +65,7 @@ namespace Datenstrukturen
             }
             return null;
         }
+
         public static void printSinglyLinkedList(Node head)
         {
             Node current = head;
