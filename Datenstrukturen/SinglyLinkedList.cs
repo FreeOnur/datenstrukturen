@@ -34,8 +34,8 @@ namespace Datenstrukturen
             if(head.Data.Equals(elementBefore))
             {
                 Node<T> newNode = new Node<T>(elementToInsert);
+                newNode.Next = head.Next;
                 head.Next = newNode;
-                head = newNode;
                 return head;
             }
             while (current != null && !current.Data.Equals(elementBefore))
@@ -47,8 +47,8 @@ namespace Datenstrukturen
                 return null;
             }
             Node<T> newNode2 = new Node<T>(elementToInsert);
+            newNode2.Next = current.Next;
             current.Next = newNode2;
-            newNode2.Next = current.Next.Next;
             return newNode2;
         }
         public Node<T> InsertBefore(T elementAfter, T elementToInsert)
