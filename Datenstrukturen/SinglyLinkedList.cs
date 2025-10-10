@@ -9,8 +9,6 @@ namespace Datenstrukturen
 {
     public class SinglyLinkedList<T>
     {
-        public Node<T> Head => head;
-
         private static Node<T> head;
         public Node<T> InsertAtEnd(T person)
         {
@@ -76,49 +74,8 @@ namespace Datenstrukturen
             return newNode2;
 
         }
-        public Node<T> InsertAtSpecificPosition(int pos, T person)
-        {
-            if(pos<1)
-            {
-                return head;
-            }
-            if (pos == 1)
-            {
-                Node<T> newNode = new Node<T>(person);
-                newNode.Next = head;
-                head = newNode;
-                return newNode;
-            }
-            Node<T> current = head;
-            for (int i = 1; i < pos -1 && current != null; i++)
-            {
-                current = current.Next;
-            }
-            if (current == null)
-            {
-                return head;
-            }
-            Node<T> newNode2 = new Node<T>(person);
-            newNode2.Next = current.Next;
-            current.Next = newNode2;
-            return head;
-        }
 
-        public Node<T> SearchNode(Func<T, bool> match)
-        {
-            var current = head;
-            while (current != null)
-            {
-                if (match(current.Data))
-                {
-                    return current;
-                }
-                current = current.Next;
-            }
-            return null;
-        }
-
-        public int PosOfElement(T person )
+        public int PosOfElement(T person)
         {
             Node<T> current = head;
             int pos = 0;
@@ -131,7 +88,7 @@ namespace Datenstrukturen
                 current = current.Next;
                 pos++;
             }
-            return -1; // Element nicht gefunden
+            return -1; 
         }
 
         public void printSinglyLinkedList()
