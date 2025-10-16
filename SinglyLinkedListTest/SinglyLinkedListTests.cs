@@ -1,7 +1,7 @@
 using Common;
 using Datenstrukturen;
 using System;
-namespace SinglyLinkedListTest
+namespace DatenstrukturenTests
 {
     [TestFixture]
     public class Tests
