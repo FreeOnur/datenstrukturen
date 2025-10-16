@@ -7,18 +7,18 @@ using Common;
 
 namespace Datenstrukturen
 {
-    public class SinglyLinkedList
+    public class SinglyLinkedList<T>
     {
-        private static Node<Person> head;
-        public static Node<Person> insertAtEnd(Person person)
+        private static Node<T> head;
+        public Node<T> InsertAtEnd(T person)
         {
-            Node<Person> newNode = new Node<Person>(person);
+            Node<T> newNode = new Node<T>(person);
             if (head == null)
             {
                 head = newNode;
                 return newNode;
             }
-            Node<Person> last = head;
+            Node<T> last = head;
             while (last.Next != null)
             {
                 last = last.Next;
@@ -26,52 +26,74 @@ namespace Datenstrukturen
             last.Next = newNode;
             return head;
         }
-
-        public static Node<Person> insertAtSpecificPosition(int pos, Person person)
+        public Node<T> InsertAfter(T elementBefore, T elementToInsert)
         {
-            if(pos<1)
+            Node<T> current = head;
+            if(head.Data.Equals(elementBefore))
             {
+                Node<T> newNode = new Node<T>(elementToInsert);
+                newNode.Next = head.Next;
+                head.Next = newNode;
                 return head;
             }
-            if (pos == 1)
-            {
-                Node<Person> newNode = new Node<Person>(person);
-                newNode.Next = head;
-                head = newNode;
-                return newNode;
-            }
-            Node<Person> current = head;
-            for (int i = 1; i < pos -1 && current != null; i++)
+            while (current != null && !current.Data.Equals(elementBefore))
             {
                 current = current.Next;
             }
             if (current == null)
             {
-                return head;
+                return null;
             }
-            Node<Person> newNode2 = new Node<Person>(person);
+            Node<T> newNode2 = new Node<T>(elementToInsert);
             newNode2.Next = current.Next;
             current.Next = newNode2;
-            return head;
+            return newNode2;
         }
-
-        public static Node<Person> searchNode(string name)
+        public Node<T> InsertBefore(T elementAfter, T elementToInsert)
         {
-            Node<Person> current = head;
-            while (current != null)
+            Node<T> current = head;
+            if (head != null && head.Data.Equals(elementAfter))
             {
-                if (current.Data.Name == name)
-                {
-                    return current;
-                }
+                Node<T> newNode = new Node<T>(elementToInsert);
+                newNode.Next = head;
+                head = newNode;
+                return newNode;
+            }
+            while (current != null && current.Next != null && !current.Next.Data.Equals(elementAfter))
+            {
                 current = current.Next;
             }
-            return null;
+
+            if (current.Next == null)
+            {
+                return null;
+            }
+            Node<T> newNode2 = new Node<T>(elementToInsert);
+            newNode2.Next = current.Next;
+            current.Next = newNode2;
+            return newNode2;
+
         }
 
-        public static void printSinglyLinkedList()
+        public int PosOfElement(T person)
         {
-            Node<Person> current = head;
+            Node<T> current = head;
+            int pos = 0;
+            while (current != null)
+            {
+                if (current.Data.Equals(person))
+                {
+                    return pos;
+                }
+                current = current.Next;
+                pos++;
+            }
+            return -1; 
+        }
+
+        public void printSinglyLinkedList()
+        {
+            Node<T> current = head;
             while (current != null)
             {
                 Console.WriteLine(current.Data);
