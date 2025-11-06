@@ -6,6 +6,7 @@ namespace Common
     {
         public T Data;
         public Node<T> Next;
+        public Node<T> Before;
         public Node(T argData)
         {
             Data = argData;
