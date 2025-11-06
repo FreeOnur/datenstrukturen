@@ -38,6 +38,15 @@ namespace DatenstrukturenTests
         }
 
         [Test]
+        public void InsertAfter_ElementAfterDoesNotExist_ReturnsNull()
+        {
+            list.InsertAfter(null, p1);
+            var retval = list.InsertAfter(p3, p2);
+            
+            Assert.AreEqual(retval, null);
+        }
+
+        [Test]
         public void InsertBefore_WhenInsertingBeforeExistingElement_PosOfElementIsCorrect()
         {
             list.InsertAfter(null, p1);
@@ -59,6 +68,23 @@ namespace DatenstrukturenTests
             Assert.AreEqual(0, list.PosOfElement(p1));
             Assert.AreEqual(1, list.PosOfElement(p2));
             Assert.AreEqual(2, list.PosOfElement(p3));
+        }
+
+        [Test]
+        public void BubbleSort_WhenInsertingRandomNumbers_ReturnsSortedList_RightPositionOfElements()
+        {
+            DoubleLinkedList<int> intList = new DoubleLinkedList<int>();
+            intList.InsertAfter(default, 5);
+            intList.InsertAfter(5, 2);
+            intList.InsertAfter(2, 8);
+            intList.InsertAfter(8, 1);
+
+            intList.BubbleSort();
+
+            Assert.AreEqual(0, intList.PosOfElement(1));
+            Assert.AreEqual(1, intList.PosOfElement(2));
+            Assert.AreEqual(2, intList.PosOfElement(5));
+            Assert.AreEqual(3, intList.PosOfElement(8));
         }
     }
 }
