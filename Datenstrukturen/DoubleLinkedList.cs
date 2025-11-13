@@ -1,11 +1,17 @@
 ﻿using Common;
+using SortingAlgorithms;
 
 namespace Datenstrukturen
 {
     public class DoubleLinkedList<T> where T : IComparable<T>
     {
         private static Node<T> head;
-
+        private ISortAlgorithm<T> sortAlgorithm;
+        public DoubleLinkedList()
+        {
+            head = null;
+            sortAlgorithm = new BubbleSort<T>();
+        }
         public Node<T> InsertAfter(T elementBefore, T elementToInsert)
         {
             Node<T> newNode = new Node<T>(elementToInsert);
@@ -17,6 +23,7 @@ namespace Datenstrukturen
             Node<T> current = head;
             while (current != null && !current.Data.Equals(elementBefore))
             {
+
                 current = current.Next;
             }
             if (current == null)
@@ -77,36 +84,9 @@ namespace Datenstrukturen
             }
             return -1;
         }
-
-        public void BubbleSort()
+        public void Sort()
         {
-            if (head == null)
-                return;
-
-            bool isSwapped;
-            Node<T> last = null;
-
-            do
-            {
-                isSwapped = false;
-                Node<T> current = head;
-
-                while (current.Next != last)
-                {
-                    if (current.Data.CompareTo(current.Next.Data) > 0)
-                    {
-                        T temp = current.Data;
-                        current.Data = current.Next.Data;
-                        current.Next.Data = temp;
-
-                        isSwapped = true;
-                    }
-                    current = current.Next;
-                }
-
-                last = current;
-            } while (isSwapped);
+            sortAlgorithm.Sort(head);
         }
-
     }
 }
