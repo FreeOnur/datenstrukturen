@@ -1,26 +1,16 @@
 ﻿using Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datenstrukturen
 {
-    public class DoubleLinkedList<T>
+    public class DoubleLinkedList<T> where T : IComparable<T>
     {
         private static Node<T> head;
 
         public Node<T> InsertAfter(T elementBefore, T elementToInsert)
         {
-            if (elementBefore == null || head == null)
+            Node<T> newNode = new Node<T>(elementToInsert);
+            if (head == null)
             {
-                Node<T> newNode = new Node<T>(elementToInsert);
-                if (head != null)
-                {
-                    newNode.Next = head;
-                    head.Before = newNode;
-                }
                 head = newNode;
                 return newNode;
             }
@@ -29,15 +19,17 @@ namespace Datenstrukturen
             {
                 current = current.Next;
             }
-            Node<T> newNode2 = new Node<T>(elementToInsert);
-            newNode2.Next = current.Next;
-            newNode2.Before = current;
+            if (current == null)
+                return null;
+           
+            newNode.Next = current.Next;
+            newNode.Before = current;
             if (current.Next != null)
             {
-                current.Next.Before = newNode2;
+                current.Next.Before = newNode;
             }
-            current.Next = newNode2;
-            return newNode2;
+            current.Next = newNode;
+            return newNode;
         }
 
         public Node<T> InsertBefore(T elementAfter, T elementToInsert)
@@ -85,5 +77,36 @@ namespace Datenstrukturen
             }
             return -1;
         }
+
+        public void BubbleSort()
+        {
+            if (head == null)
+                return;
+
+            bool isSwapped;
+            Node<T> last = null;
+
+            do
+            {
+                isSwapped = false;
+                Node<T> current = head;
+
+                while (current.Next != last)
+                {
+                    if (current.Data.CompareTo(current.Next.Data) > 0)
+                    {
+                        T temp = current.Data;
+                        current.Data = current.Next.Data;
+                        current.Next.Data = temp;
+
+                        isSwapped = true;
+                    }
+                    current = current.Next;
+                }
+
+                last = current;
+            } while (isSwapped);
+        }
+
     }
 }
