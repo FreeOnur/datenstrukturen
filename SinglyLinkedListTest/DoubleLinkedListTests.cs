@@ -79,7 +79,7 @@ namespace DatenstrukturenTests
             intList.InsertAfter(2, 8);
             intList.InsertAfter(8, 1);
 
-            intList.BubbleSort();
+            intList.Sort();
 
             Assert.AreEqual(0, intList.PosOfElement(1));
             Assert.AreEqual(1, intList.PosOfElement(2));
