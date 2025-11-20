@@ -78,6 +78,25 @@ namespace DatenstrukturenTests
             intList.InsertAfter(5, 2);
             intList.InsertAfter(2, 8);
             intList.InsertAfter(8, 1);
+            intList.SetSortAlgorithm(new SortingAlgorithms.BubbleSort<int>());
+
+            intList.Sort();
+
+            Assert.AreEqual(0, intList.PosOfElement(1));
+            Assert.AreEqual(1, intList.PosOfElement(2));
+            Assert.AreEqual(2, intList.PosOfElement(5));
+            Assert.AreEqual(3, intList.PosOfElement(8));
+        }
+
+        [Test]
+        public void InsertionSort_WhenInsertingRandomNumbers_ReturnsSortedList_RightPositionOfElements()
+        {
+            DoubleLinkedList<int> intList = new DoubleLinkedList<int>();
+            intList.InsertAfter(default, 5);
+            intList.InsertAfter(5, 2);
+            intList.InsertAfter(2, 8);
+            intList.InsertAfter(8, 1);
+            intList.SetSortAlgorithm(new SortingAlgorithms.InsertionSort<int>());
 
             intList.Sort();
 
