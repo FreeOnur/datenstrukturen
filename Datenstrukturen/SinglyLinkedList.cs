@@ -9,7 +9,7 @@ namespace Datenstrukturen
 {
     public class SinglyLinkedList<T>
     {
-        private static Node<T> head;
+        private Node<T> head;
         public Node<T> InsertAtEnd(T person)
         {
             Node<T> newNode = new Node<T>(person);
