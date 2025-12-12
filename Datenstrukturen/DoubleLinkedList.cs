@@ -10,7 +10,6 @@ namespace Datenstrukturen
         public DoubleLinkedList()
         {
             head = null;
-            sortAlgorithm = new BubbleSort<T>();
         }
         public Node<T> InsertAfter(T elementBefore, T elementToInsert)
         {
@@ -83,6 +82,10 @@ namespace Datenstrukturen
                 pos++;
             }
             return -1;
+        }
+        public void SetSortAlgorithm(ISortAlgorithm<T> algorithm)
+        {
+            sortAlgorithm = algorithm;
         }
         public void Sort()
         {
