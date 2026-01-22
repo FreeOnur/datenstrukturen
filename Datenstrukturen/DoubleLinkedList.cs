@@ -1,11 +1,13 @@
 ﻿using Common;
-using SortingAlgorithms;
+
 
 namespace Datenstrukturen
 {
     public class DoubleLinkedList<T> where T : IComparable<T>
     {
-        private static Node<T> head;
+        private Node<T> head;
+        public Node<T> Head => head;
+
         private ISortAlgorithm<T> sortAlgorithm;
         public DoubleLinkedList()
         {
@@ -91,5 +93,10 @@ namespace Datenstrukturen
         {
             sortAlgorithm.Sort(head);
         }
+        public void SetHead(Node<T> newHead)
+        {
+            head = newHead;
+        }
+
     }
 }

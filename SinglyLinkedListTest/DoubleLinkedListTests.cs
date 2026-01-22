@@ -105,5 +105,71 @@ namespace DatenstrukturenTests
             Assert.AreEqual(2, intList.PosOfElement(5));
             Assert.AreEqual(3, intList.PosOfElement(8));
         }
+
+        [Test]
+        public void QuickSort_WhenInsertingRandomNumbers_ReturnsSortedList_RightPositionOfElements()
+        {
+            DoubleLinkedList<int> intList = new DoubleLinkedList<int>();
+            intList.InsertAfter(default, 5);
+            intList.InsertAfter(5, 2);
+            intList.InsertAfter(2, 8);
+            intList.InsertAfter(8, 1);
+            intList.SetSortAlgorithm(new SortingAlgorithms.QuickSort<int>());
+
+            intList.Sort();
+
+            Assert.AreEqual(0, intList.PosOfElement(1));
+            Assert.AreEqual(1, intList.PosOfElement(2));
+            Assert.AreEqual(2, intList.PosOfElement(5));
+            Assert.AreEqual(3, intList.PosOfElement(8));
+        }
+
+        [Test]
+        public void QuickSort_WhenListHasOneElement_ListStaysUnchanged()
+        {
+            var list = new DoubleLinkedList<int>();
+            list.InsertAfter(default, 5);
+
+            list.SetSortAlgorithm(new SortingAlgorithms.QuickSort<int>());
+            list.Sort();
+
+            Assert.AreEqual(0, list.PosOfElement(5));
+        }
+
+        [Test]
+        public void BucketSort_WhenInsertingRandomNumbers_ReturnsSortedList_RightPositionOfElements()
+        {
+            DoubleLinkedList<double> intList = new DoubleLinkedList<double>();
+            intList.InsertAfter(default, 5);
+            intList.InsertAfter(5, 2);
+            intList.InsertAfter(2, 8);
+            intList.InsertAfter(8, 1);
+            intList.SetSortAlgorithm(new SortingAlgorithms.BucketSort());
+
+            intList.Sort();
+
+            Assert.AreEqual(0, intList.PosOfElement(1));
+            Assert.AreEqual(1, intList.PosOfElement(2));
+            Assert.AreEqual(2, intList.PosOfElement(5));
+            Assert.AreEqual(3, intList.PosOfElement(8));
+        }
+
+        [Test]
+        public void BucketSort_WhenListHasDoubles_ListReturnsSortedDoubles()
+        {
+            DoubleLinkedList<double> doubleList = new DoubleLinkedList<double>();
+            doubleList.InsertAfter(default, 4.4);
+            doubleList.InsertAfter(4.4, 1.1);
+            doubleList.InsertAfter(1.1, 3.3);
+            doubleList.InsertAfter(3.3, 2.2);
+            doubleList.SetSortAlgorithm(new SortingAlgorithms.BucketSort());
+
+            doubleList.Sort();
+
+            Assert.AreEqual(0, doubleList.PosOfElement(1.1));
+            Assert.AreEqual(1, doubleList.PosOfElement(2.2));
+            Assert.AreEqual(2, doubleList.PosOfElement(3.3));
+            Assert.AreEqual(3, doubleList.PosOfElement(4.4));
+        }
     }
 }
